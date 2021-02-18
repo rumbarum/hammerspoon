@@ -29,10 +29,13 @@ function obj:init(mode)
         { mod={} , key='j' , func=rapidKey({} , 'down')  , repetition=true } ,
         { mod={} , key='k' , func=rapidKey({} , 'up')    , repetition=true } ,
         { mod={} , key='l' , func=rapidKey({} , 'right') , repetition=true } ,
+        { mod={} , key='u' , func=rapidKey({'shift'} , '-') , repetition=true } ,
         { mod={} , key='p' , func=rapidKey({} , 'delete') , repetition=true } ,
         { mod={} , key='d' , func=rapidKey({} , 'forwarddelete') , repetition=true } ,
         { mod={} , key='1' , func=rapidKey({} , 'click1') , repetition=true } ,
         { mod={} , key='2' , func=rapidKey({} , 'click2') , repetition=true } ,
+        { mod={} , key='w' , func=rapidKey({'alt'} , 'right') , repetition=true } ,
+        { mod={} , key='b' , func=rapidKey({'alt'} , 'left') , repetition=true } ,
         { mod={} , key='n' , func=rapidKey({'command'} , 'left') , repetition=true } ,
         { mod={} , key='.' , func=rapidKey({'command'} , 'right') , repetition=true } ,
     }, function(v)

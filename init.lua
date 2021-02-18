@@ -1,6 +1,6 @@
 -- hammerspoon config
 
-require('luarocks.loader')
+--require('luarocks.loader')
 
 -- require('modules.mouse'):init('f14')
 require('modules.inputsource_aurora')
