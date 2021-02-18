@@ -23,6 +23,7 @@ do  -- f13 (vimlike)
     vim_mode:bind({'shift'}, 'r', hs.reload, vimlike.close)
 
     vim_mode:bind({}, 'a', function()
+
         local activeAppName = hs.application.frontmostApplication():name()
         hs.alert.show(activeAppName)
     end, vimlike.close)
@@ -72,8 +73,8 @@ do  -- f13 (tab move)
         end
     end
 
-    vim_mode:bind({}, ',', tabMove('left'), vimlike.close, tabMove('left'))
-    vim_mode:bind({}, '.', tabMove('right'), vimlike.close, tabMove('right'))
+    vim_mode:bind({}, 'm', tabMove('left'), vimlike.close, tabMove('left'))
+    vim_mode:bind({}, ',', tabMove('right'), vimlike.close, tabMove('right'))
 end
 
 do  -- app manager
@@ -81,7 +82,7 @@ do  -- app manager
     local mode = app_mode
 
     mode:bind({}, 'c', app_man:toggle('Google Chrome'))
-    mode:bind({}, 'i', app_man:toggle('IntelliJ IDEA'))
+    mode:bind({}, 'j', app_man:toggle('IntelliJ IDEA'))
     -- mode:bind({}, 'i', app_man:toggle('PhpStorm'))
     mode:bind({}, 'l', app_man:toggle('Line'))
     mode:bind({}, 'q', app_man:toggle('Sequel Pro'))
@@ -101,14 +102,14 @@ do  -- app manager
     -- mode:bind({}, 'b', app_man:toggle('Robo 3T'))
     mode:bind({}, 'r', app_man:toggle('Trello'))
     mode:bind({}, 'k', app_man:toggle('KakaoTalk'))
-    mode:bind({}, 'space', app_man:toggle('Terminal'))
-    -- mode:bind({}, 'space', app_man:toggle('iTerm'))
+    --mode:bind({}, 'space', app_man:toggle('Terminal'))
+    mode:bind({}, 'space', app_man:toggle('iTerm'))
     mode:bind({}, ',', app_man:toggle('System Preferences'))
     mode:bind({}, 'z', function() hs.eventtap.keyStroke({'command', 'shift'}, 'space') end)
 
 
-    -- mode:bind({'shift'}, 'tab', app_man.focusPreviousScreen)
-    -- mode:bind({}, 'tab', app_man.focusNextScreen)
+    --mode:bind({'shift'}, 'tab', app_man.focusPreviousScreen)
+    --mode:bind({}, 'tab', app_man.focusNextScreen)
 
     hs.hotkey.bind({}, 'f18', function() hs.eventtap.keyStroke({'command', 'shift'}, 'space') end)
     mode:bind({}, 'tab', hs.hints.windowHints)
@@ -152,7 +153,7 @@ end
 
 do  -- clipboard history
     local clipboard = require('modules.clipboard')
-    clipboard.setSize(10)
+    clipboard.setSize(20)
     app_mode:bind({}, '`', clipboard.showList)
     app_mode:bind({'shift'}, '`', clipboard.clear)
 end
@@ -174,4 +175,3 @@ end
 require('modules.Caffeine'):init(spoon)
 
 hs.alert.show('loaded')
-

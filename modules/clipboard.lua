@@ -3,7 +3,7 @@
 
 local pasteboard = require("hs.pasteboard")
 local history = {}
-local historySize = 10
+local historySize = 20
 local lastChange = pasteboard.changeCount()
 local register = {}
 
