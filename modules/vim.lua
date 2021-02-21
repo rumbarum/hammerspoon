@@ -32,12 +32,16 @@ function obj:init(mode)
         { mod={} , key='u' , func=rapidKey({'shift'} , '-') , repetition=true } ,
         { mod={} , key='p' , func=rapidKey({} , 'delete') , repetition=true } ,
         { mod={} , key='d' , func=rapidKey({} , 'forwarddelete') , repetition=true } ,
-        { mod={} , key='1' , func=rapidKey({} , 'click1') , repetition=true } ,
-        { mod={} , key='2' , func=rapidKey({} , 'click2') , repetition=true } ,
+        { mod={} , key='1' , func=leftClick() , repetition=true } ,
+        { mod={} , key='2' , func=rightClick() , repetition=true } ,
         { mod={} , key='w' , func=rapidKey({'alt'} , 'right') , repetition=true } ,
         { mod={} , key='b' , func=rapidKey({'alt'} , 'left') , repetition=true } ,
         { mod={} , key='n' , func=rapidKey({'command'} , 'left') , repetition=true } ,
         { mod={} , key='.' , func=rapidKey({'command'} , 'right') , repetition=true } ,
+        { mod={} , key='8' , func=rapidKey({'alt', 'shift'} , 'left') , repetition=true } ,
+        { mod={} , key='9' , func=rapidKey({'alt', 'shift' } , 'right') , repetition=true } ,
+        { mod={} , key='7' , func=rapidKey({'command','shift'} , 'left') , repetition=true } ,
+        { mod={} , key='0' , func=rapidKey({'command', 'shift'} , 'right') , repetition=true } ,
     }, function(v)
         if v.repetition then
             mode:bind(v.mod, v.key, v.func, vim_end, v.func)
@@ -103,4 +107,19 @@ function inputKey(modifiers, key)
     end
 end
 
+function leftClick()
+  local ptMouse = hs.mouse.getAbsolutePosition()
+  local types = hs.eventtap.event.types
+  hs.eventtap.event.newMouseEvent(types.leftMouseDown, ptMouse ):post()
+  hs.eventtap.event.newMouseEvent(types.leftMouseUp, ptMouse):post()
+end
+function rightClick()
+  local ptMouse = hs.mouse.getAbsolutePosition()
+  local types = hs.eventtap.event.types
+  hs.eventtap.event.newMouseEvent(types.rightMouseDown, ptMouse ):post()
+  hs.eventtap.event.newMouseEvent(types.rightMouseUp, ptMouse):post()
+end
+
 return obj
+
+
